@@ -1,8 +1,26 @@
+const DEFAULT_SITE_URL = 'https://stage60.ru';
+
+/**
+ * Адрес сайта из NEXT_PUBLIC_SITE_URL. Пустое или кривое значение не роняет сборку:
+ * «stage60.ru» → https://stage60.ru, «» или мусор → адрес по умолчанию; слеш в конце убирается.
+ */
+function resolveSiteUrl(raw: string | undefined): string {
+  const value = raw?.trim();
+  if (!value) return DEFAULT_SITE_URL;
+  const withScheme = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+  try {
+    return new URL(withScheme).origin;
+  } catch {
+    console.warn(`[site] NEXT_PUBLIC_SITE_URL="${value}" — не URL, использую ${DEFAULT_SITE_URL}`);
+    return DEFAULT_SITE_URL;
+  }
+}
+
 export const site = {
   name: 'STAGE',
   fullName: 'STAGE — центр современной хореографии',
   /** Замените на боевой домен после подключения в ONREZA */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://stage60.ru',
+  url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
   city: 'Псков',
   foundedYear: 2009,
   description:
