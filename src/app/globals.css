@@ -1,0 +1,368 @@
+:root {
+  /* Цвета */
+  --ink: #0e0e0e;
+  --paper: #efefec;
+  --white: #ffffff;
+  --accent: #5e5e5a;
+  --accent-on-dark: #a8a8a4;
+  --text: #2a2a28;
+  --muted: #4a4a47;
+  --muted-2: #6b6b67;
+  --line: #c9c9c5;
+  --line-soft: #dcdcd8;
+  --on-dark-muted: #bdbdb8;
+  --on-dark-text: #cfcfcb;
+  --on-dark-soft: #e4e4e0;
+  --on-dark-dim: #9a9a96;
+  --focus: #2436ff;
+
+  /* Шрифты --font-display (Oswald) и --font-body (Manrope)
+     задаёт next/font в layout.tsx на элементе <html> */
+
+  /* Сетка и ритм */
+  --container: 1360px;
+  --gutter: 40px;
+  --section-y: 120px;
+  --radius-card: 28px;
+  --radius-pill: 999px;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --gutter: 20px;
+    --section-y: 72px;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --gutter: 16px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--ink);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+img,
+svg {
+  display: block;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.dark :focus-visible,
+.dark:focus-visible {
+  outline-color: var(--white);
+}
+
+[id] {
+  scroll-margin-top: 16px;
+}
+
+/* ---------- Общие примитивы ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 16px;
+  color: var(--white);
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: clamp(44px, 6vw, 88px);
+  line-height: 0.95;
+}
+
+/* Кнопки-пилюли */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-ink {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btn-ink:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.btn-accent:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btn-white {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.btn-white:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.btn-outline {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btn-lg {
+  padding: 24px 36px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.btn-md {
+  padding: 18px 28px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.btn-sm {
+  padding: 14px 22px;
+  font-size: 15px;
+}
+
+@media (max-width: 480px) {
+  .btn-lg {
+    padding: 20px 28px;
+    font-size: 17px;
+  }
+}
+
+/* ================= Анимации =================
+   html.motion ставит скрипт в <head> (нет класса — нет анимаций: reduced motion / без JS).
+   Плавность — одна «дорогая» кривая на весь сайт. */
+
+:root {
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* --- Буквы из-под маски (SplitText) --- */
+.split {
+  display: inline-flex;
+}
+
+.split .ch {
+  display: inline-block;
+  overflow: hidden;
+  /* запас под выносные элементы, чтобы маска не срезала буквы */
+  padding: 0.08em 0.01em 0.06em;
+  margin: -0.08em -0.01em -0.06em;
+}
+
+.split .ch > span {
+  display: inline-block;
+}
+
+@keyframes ch-up {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+html.motion .split-load .ch > span {
+  animation: ch-up 1.1s var(--ease) both;
+  animation-delay: var(--d, 0s);
+}
+
+html.motion [data-reveal='split'] .split-reveal .ch > span {
+  transform: translateY(105%);
+  transition: transform 1.2s var(--ease);
+  transition-delay: var(--d, 0s);
+}
+
+html.motion [data-reveal='split'].is-in .split-reveal .ch > span {
+  transform: none;
+}
+
+/* --- Появление при прокрутке --- */
+html.motion [data-reveal='up'] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 1.1s var(--ease),
+    translate 0.6s var(--ease);
+  transition-delay:
+    calc(var(--i, 0) * 90ms),
+    calc(var(--i, 0) * 90ms),
+    0s;
+}
+
+html.motion [data-reveal='up'].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Заголовок выезжает из-под маски */
+html.motion [data-reveal='mask'] {
+  clip-path: inset(100% -5% -25% -5%);
+  transform: translateY(0.35em);
+  transition:
+    clip-path 1.2s var(--ease),
+    transform 1.2s var(--ease);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+html.motion [data-reveal='mask'].is-in {
+  clip-path: inset(-25% -5% -25% -5%);
+  transform: none;
+}
+
+/* Линия прорисовывается слева направо (элемент с ::before-линией) */
+html.motion [data-reveal='line']::before {
+  transform: scaleX(0);
+  transition: transform 1.4s var(--ease-in-out);
+  transition-delay: calc(var(--i, 0) * 120ms);
+}
+
+html.motion [data-reveal='line'].is-in::before {
+  transform: scaleX(1);
+}
+
+/* --- Ховеры --- */
+.btn svg {
+  transition: transform 0.45s var(--ease);
+}
+
+.btn:hover svg {
+  transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.motion [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}

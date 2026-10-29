@@ -1,0 +1,60 @@
+.section {
+  position: relative;
+  background: var(--white);
+}
+
+.inner {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 64px;
+}
+
+.aside {
+  flex: 1 1 440px;
+  min-width: 0;
+}
+
+.formCol {
+  flex: 1 1 480px;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: clamp(48px, 7vw, 112px);
+  line-height: 0.92;
+}
+
+.text {
+  margin-top: 28px;
+  max-width: 440px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.links {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 760px) {
+  .inner {
+    gap: 48px;
+  }
+
+  .aside,
+  .formCol {
+    flex-basis: 100%;
+  }
+
+  .links {
+    margin-top: 28px;
+  }
+}

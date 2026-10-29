@@ -1,0 +1,41 @@
+.page {
+  max-width: 820px;
+  padding-top: 48px;
+  padding-bottom: var(--section-y);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.back {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.title {
+  margin: 32px 0 24px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 0.95;
+  color: var(--ink);
+}
+
+.placeholder {
+  padding: 16px 20px;
+  border: 1px dashed var(--muted-2);
+  border-radius: 20px;
+  color: var(--muted);
+}
+
+.page h2 {
+  margin: 40px 0 12px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.page p + p {
+  margin-top: 12px;
+}

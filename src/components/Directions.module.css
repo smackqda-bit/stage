@@ -1,0 +1,177 @@
+.section {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.intro {
+  max-width: 380px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.levels {
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.levelLight,
+.levelDark {
+  border-radius: var(--radius-pill);
+  padding: 10px 18px;
+}
+
+.levelLight {
+  background: var(--white);
+}
+
+.levelDark {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.grid {
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 300px;
+  container-type: inline-size;
+}
+
+.card:hover {
+  translate: 0 -6px;
+}
+
+.card {
+  transition:
+    translate 0.6s var(--ease),
+    box-shadow 0.6s var(--ease);
+}
+
+.cardDark {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.num {
+  display: inline-block;
+  transition: translate 0.6s var(--ease);
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--muted-2);
+}
+
+.cardDark .num {
+  color: var(--on-dark-dim);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  /* 40px как в макете; в узких карточках чуть меньше, чтобы «Contemporary» не рвалось */
+  font-size: min(40px, 15cqi);
+  text-transform: uppercase;
+  line-height: 1;
+  overflow-wrap: break-word;
+}
+
+.text {
+  flex-grow: 1;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.cardDark .text {
+  color: var(--on-dark-soft);
+}
+
+.schedule {
+  flex-grow: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+}
+
+.row dt {
+  white-space: nowrap;
+}
+
+.row + .row {
+  border-top: 1px solid var(--line-soft);
+  padding-top: 10px;
+}
+
+.row dd {
+  margin: 0;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.card:hover .num {
+  translate: 6px 0;
+}
+
+.card:hover .tag {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+}
+
+.cardDark:hover .tag {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--ink);
+}
+
+.tag {
+  transition:
+    background-color 0.4s var(--ease),
+    color 0.4s var(--ease);
+  align-self: flex-start;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .card {
+    min-height: 0;
+    padding: 24px;
+  }
+}

@@ -1,0 +1,115 @@
+.section {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+
+.layout {
+  margin-top: 56px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 64px;
+}
+
+.list {
+  flex: 1 1 520px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--ink);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+
+.row:first-child {
+  border-top-color: var(--ink);
+}
+
+.name,
+.price {
+  transition: translate 0.5s var(--ease);
+}
+
+.row:hover .name {
+  translate: 10px 0;
+}
+
+.row:hover .price {
+  translate: -10px 0;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.price {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.card {
+  flex: 1 1 360px;
+  min-height: 380px;
+  padding: 40px;
+  border-radius: var(--radius-card);
+  background: var(--accent);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.cardPrice {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: clamp(56px, 6vw, 88px);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.cardText {
+  margin-top: 16px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .layout {
+    margin-top: 40px;
+  }
+
+  .list {
+    flex-basis: 100%;
+  }
+
+  .row {
+    padding: 18px 0;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 26px;
+  }
+
+  .card {
+    flex-basis: 100%;
+    min-height: 0;
+    padding: 32px 24px;
+  }
+}
