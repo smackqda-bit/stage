@@ -32,7 +32,7 @@ export default function Trial() {
           <a href="#signup" className="btn btn-white btn-md">
             Хочу на пробное
           </a>
-          <span className={styles.note}>Ответим в течение дня</span>
+          <span className={styles.note}>Ответим в течение дня</span>
         </div>
       </div>
     </section>

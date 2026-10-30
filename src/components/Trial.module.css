@@ -117,5 +117,19 @@
 
   .cta {
     margin-top: 56px;
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+
+  .cta :global(.btn) {
+    flex: 0 0 auto;
+    padding: 15px 24px;
+    font-size: 15px;
+  }
+
+  .note {
+    min-width: 0;
+    font-size: 14px;
+    line-height: 1.35;
   }
 }

@@ -123,6 +123,10 @@
 }
 
 @media (max-width: 760px) {
+  .hero {
+    --header-h: 85px;
+  }
+
   .ovals {
     min-height: 140px;
   }

@@ -76,7 +76,20 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 760px) {
+  .header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .header :global(.btn) {
+    padding: 11px 18px;
+    font-size: 14px;
+  }
+}
+
+/* На узких телефонах подпись у логотипа не помещается рядом с кнопкой */
+@media (max-width: 480px) {
   .tagline {
     display: none;
   }
